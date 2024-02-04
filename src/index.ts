@@ -3,10 +3,9 @@ import { useEffect, useState, useCallback } from 'react';
 
 /**
  * Hook to update a value whenever an event on {@link window} triggers based on data in the event.
- * If the value does not reference the event at all, prefer {@link useEventUpdatedValue} instead.
  *
  * @param type The event to listen for
- * @param callback Function which takes the event that was triggered and returns the new value
+ * @param callback Function which takes the event that was triggered and returns the new value. If passing a function literal, it should be wrapped in {@link useCallback}
  * @param initialValue Optional: The initial value set before the event has triggered at least once
  * @returns The current value
  */
@@ -18,31 +17,6 @@ function useEventValue<K extends keyof WindowEventMap, T>(type: K, callback: (ev
     useEffect(() => {
         const handler = (event: WindowEventMap[K]) => {
             setValue(callback(event));
-        }
-        window.addEventListener(type, handler);
-        return () => window.removeEventListener(type, handler);
-    }, [callback, type])
-    
-    return value;
-}
-
-/**
- * Hook to update a value whenever an event on {@link window} triggers.
- * If information from the event is needed, use {@link useEventValue} instead.
- *
- * @param type The event to listen for
- * @param callback Function which takes the event that was triggered and returns the new value
- * @param initialValue Optional: The initial value set before the event has triggered at least once
- * @returns The current value
- */
-function useEventUpdatedValue<T>(type: keyof WindowEventMap, callback: () => T) : T | undefined;
-function useEventUpdatedValue<T>(type: keyof WindowEventMap, callback: () => T, initialValue: T) : T;
-function useEventUpdatedValue<T>(type: keyof WindowEventMap, callback: () => T, initialValue?: T) {
-    const [value, setValue] = useState(initialValue);
-
-    useEffect(() => {
-        const handler = () => {
-            setValue(callback());
         }
         window.addEventListener(type, handler);
         return () => window.removeEventListener(type, handler);
@@ -70,4 +44,4 @@ function useIntervalValue<T>(timeout: number, callback: () => T, initialValue?: 
     return value;
 }
 
-export { useEventValue, useEventUpdatedValue, useIntervalValue };
+export { useEventValue, useIntervalValue };

@@ -10,6 +10,14 @@ import { useEffect, useState, useCallback } from 'react';
  * @returns The current value
  */
 function useEventValue<K extends keyof WindowEventMap, T>(type: K, callback: (event: WindowEventMap[K]) => T): T | undefined;
+/**
+ * Hook to update a value whenever an event on {@link window} triggers based on data in the event.
+ *
+ * @param type The event to listen for
+ * @param callback Function which takes the event that was triggered and returns the new value. If passing a function literal, it should be wrapped in {@link useCallback}
+ * @param initialValue Optional: The initial value set before the event has triggered at least once
+ * @returns The current value
+ */
 function useEventValue<K extends keyof WindowEventMap, T>(type: K, callback: (event: WindowEventMap[K]) => T, initialValue: T): T;
 function useEventValue<K extends keyof WindowEventMap, T>(type: K, callback: (event: WindowEventMap[K]) => T, initialValue?: T) {
     const [value, setValue] = useState(initialValue);

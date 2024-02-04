@@ -1,0 +1,48 @@
+{
+  "name": "@tater-archives/react-use-updated-value",
+  "version": "2.2.4",
+  "description": "Utilities for handling state arrays in React",
+  "type": "module",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JosiahFu/react-use-updated-value"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "state",
+    "array",
+    "utility"
+  ],
+  "author": "Josiah Fu josiahfu@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@types/react": "^18.2.20",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.47.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "rollup": "^3.28.0",
+    "rollup-plugin-dts": "^5.3.1",
+    "tslib": "^2.6.1",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
+}
